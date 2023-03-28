@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Upload a Song</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #3498db;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+      h1 {
+        margin: 20px;
+        text-align: center;
+      }
+      form {
+        margin: 20px;
+        text-align: center;
+      }
+      label {
+        display: block;
+        margin: 10px 0;
+        text-align: left;
+      }
+      input[type=text], input[type=file] {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin: 10px 0;
+        padding: 12px;
+        width: 100%;
+      }
+      input[type=submit] {
+        background-color: #3498db;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 12px 20px;
+        text-align: center;
+        text-decoration: none;
+        width: 100%;
+      }
+      input[type=submit]:hover {
+        background-color: #2980b9;
+      }
+      a {
+        background-color: #f1f1f1;
+        border: none;
+        color: black;
+        display: block;
+        font-size: 16px;
+        margin: 20px;
+        padding: 12px 20px;
+        text-align: center;
+        text-decoration: none;
+        width: 100%;
+      }
+      a:hover {
+        background-color: #ddd;
+      }
+      @media only screen and (min-width: 600px) {
+        form {
+          display: inline-block;
+          margin: 20px;
+          text-align: left;
+          width: 50%;
+        }
+        a {
+          display: inline-block;
+          margin: 20px;
+          width: 40%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Upload a Song</h1>
+    </header>
+    <form method="post" enctype="multipart/form-data">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required>
+      <label for="artist">Artist:</label>
+      <input type="text" id="artist" name="artist" required>
+      <label for="audio">Audio file:</label>
+      <input type="file" id="audio" name="audio" accept=".mp3, .wav, .flac" required>
+      <input type="submit" value="Upload">
+    </form>
+    <a href="{{ url_for('my_songs') }}">My Songs</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+  </body>
+</html>

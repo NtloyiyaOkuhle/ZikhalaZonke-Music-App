@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Songs</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+      }
+
+      h1 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+
+      a {
+        display: block;
+        padding: 10px;
+        text-align: center;
+        background-color: #2e8ece;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin: 20px auto;
+        width: 80%;
+        max-width: 300px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      a:hover {
+        background-color: #4aa3df;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My Songs</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Artist</th>
+          <th>Filename</th>
+        </tr>
+      </thead>
+      <tbody>
+		{% for song in songs %}
+		<tr>
+		<td>{{ song.title }}</td>
+		<td>{{ song.artist }}</td>
+		<td>{{ song.filename }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+	</table>
+	<a href="{{ url_for('upload') }}">Upload a Song</a>
+	<a href="{{ url_for('logout') }}">Logout</a>
+  </body>
+</html>
