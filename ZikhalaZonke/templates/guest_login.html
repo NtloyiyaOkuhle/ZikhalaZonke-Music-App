@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<html>
+<head>
+	<title>Guest Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       body {
         font-family: 'Helvetica Neue', sans-serif;
@@ -97,25 +94,27 @@
         }
       }
     </style>
+</head>
+<body>
+	<div class="container">
+		<h1>Guest Login</h1>
+		<form method="post">
+			<label for="username">Username:</label>
+			<input type="text" name="username" id="username">
 
-  </head>
-  <body>
-    <div class="container">
-      <h1><i class="fas fa-sign-in-alt"></i> Login</h1>
-      <form method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <input type="submit" value="Login">
-		{% with messages = get_flashed_messages() %}
-		{% if messages %}
-		<div class="error">{{ messages[0] }}</div>
-		{% endif %}
-		{% endwith %}
-      </form>
-      <a href="{{ url_for('register') }}"><i class="fas fa-user-plus"></i> Register</a>
-	  <a href="{{ url_for('guest_login') }}"><i class="fas fa-user-plus"></i>Guest Login</a>
+			<label for="password">Password:</label>
+			<input type="password" name="password" id="password">
+
+			<input type="submit" value="Login">
+
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+			<div class="error">{{ messages[0] }}</div>
+			{% endif %}
+			{% endwith %}
+		</form>
+		<a href="{{ url_for('register') }}"><i class="fas fa-user-plus"></i> Register</a>
+		<a href="{{ url_for('login') }}"><i class="fas fa-user-plus"></i>Login</a>
 	</div>
-  </body>
+</body>
 </html>

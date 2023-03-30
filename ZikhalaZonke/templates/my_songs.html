@@ -57,6 +57,27 @@
       a:hover {
         background-color: #4aa3df;
       }
+
+      .delete-form {
+        display: inline-block;
+      }
+
+      .delete-button {
+        display: inline-block;
+        padding: 10px;
+        text-align: center;
+        background-color: #ff2e2e;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin: 0 5px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .delete-button:hover {
+        background-color: #ff5050;
+      }
     </style>
   </head>
   <body>
@@ -67,6 +88,8 @@
           <th>Title</th>
           <th>Artist</th>
           <th>Filename</th>
+          <th>Ratings</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -75,6 +98,22 @@
 		<td>{{ song.title }}</td>
 		<td>{{ song.artist }}</td>
 		<td>{{ song.filename }}</td>
+		<td>
+		  {% if song.user == current_user %}
+		      {% if song.ratings %}
+		          {{ song.ratings }}
+		      {% else %}
+		          No Ratings Yet
+		      {% endif %}
+		  {% endif %}
+		</td>
+		<td>
+		  {% if song.user == current_user %}
+		    <form class="delete-form" method="POST" action="{{ url_for('delete_song', song_id=song.id) }}">
+		      <button type="submit" class="delete-button">Delete</button>
+		    </form>
+		  {% endif %}
+		</td>
 		</tr>
 		{% endfor %}
 	</tbody>
